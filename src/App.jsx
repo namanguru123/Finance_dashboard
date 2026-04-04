@@ -1,26 +1,26 @@
 import Sidebar from "./layout/Sidebar"
 import Header from "./layout/Header"
-import StatCard from "./components/StatCard"
-
-
+import { Routes, Route } from "react-router-dom"
+import Dashboard from "./pages/Dashboard"
+import Analytics from "./pages/Analytics"
+import Transactions from "./pages/Transactions"
+import Settings from "./pages/Settings"
 
 function App() {
   return (
-    <div className="flex">
+    <div className="flex h-screen overflow-hidden">
       <Sidebar />
 
-      <div className="flex-1 bg-gray-100 min-h-screen">
+      <div className="flex-1 flex flex-col">
         <Header />
 
-
-        <div className="p-6">
-          <h1 className="text-2xl font-bold mb-6">Welcome back</h1>
-
-          <div className="grid grid-cols-3 gap-6">
-            <StatCard title="Total Balance" amount="45,000" change="+2.5%" />
-            <StatCard title="Income" amount="20,000" change="+1.2%" />
-            <StatCard title="Expenses" amount="12,000" change="-0.8%" />
-          </div>
+        <div className="flex-1 overflow-y-auto bg-gray-50 p-6">
+          <Routes>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/analytics" element={<Analytics />} />
+            <Route path="/transactions" element={<Transactions />} />
+            <Route path="/settings" element={<Settings />} />
+          </Routes>
         </div>
       </div>
     </div>
