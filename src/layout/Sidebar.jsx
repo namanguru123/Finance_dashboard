@@ -1,32 +1,56 @@
+import { NavLink } from "react-router-dom"
 import { Home, CreditCard, BarChart3, Settings } from "lucide-react"
-import { Link } from "react-router-dom"
-
 
 const Sidebar = () => {
+  const linkClass =
+    "flex items-center gap-3 p-2 rounded-lg transition"
+
   return (
-    <div className="w-64 h-screen bg-gray-900 text-white p-5 flex flex-col">
+    <div className="w-64 bg-gray-900 text-white p-5 flex flex-col">
       <h1 className="text-2xl font-bold mb-10">FinDash</h1>
 
-      <nav className="flex flex-col gap-4">
-        <Link to="/" className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-800">
-            <Home size={20} />
-            <span>Dashboard</span>
-            </Link>
+      <nav className="flex flex-col gap-2">
 
-            <Link to="/analytics" className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-800">
-            <BarChart3 size={20} />
-            <span>Analytics</span>
-            </Link>
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            `${linkClass} ${isActive ? "bg-gray-800" : "hover:bg-gray-800"}`
+          }
+        >
+          <Home size={20} />
+          <span>Dashboard</span>
+        </NavLink>
 
-            <Link to="/transactions" className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-800">
-            <CreditCard size={20} />
-            <span>Transactions</span>
-            </Link>
+        <NavLink
+          to="/transactions"
+          className={({ isActive }) =>
+            `${linkClass} ${isActive ? "bg-gray-800" : "hover:bg-gray-800"}`
+          }
+        >
+          <CreditCard size={20} />
+          <span>Transactions</span>
+        </NavLink>
 
-            <Link to="/settings" className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-800">
-            <Settings size={20} />
-            <span>Settings</span>
-            </Link>
+        <NavLink
+          to="/analytics"
+          className={({ isActive }) =>
+            `${linkClass} ${isActive ? "bg-gray-800" : "hover:bg-gray-800"}`
+          }
+        >
+          <BarChart3 size={20} />
+          <span>Analytics</span>
+        </NavLink>
+
+        <NavLink
+          to="/settings"
+          className={({ isActive }) =>
+            `${linkClass} ${isActive ? "bg-gray-800" : "hover:bg-gray-800"}`
+          }
+        >
+          <Settings size={20} />
+          <span>Settings</span>
+        </NavLink>
+
       </nav>
     </div>
   )
